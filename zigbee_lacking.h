@@ -2,7 +2,7 @@
 #define ZIGBEE_LACKING_H__
 
 #include "zb_zcl_power_config.h"
-#include "zb_zcl_illuminance_measurement.h"
+#include "zb_zcl_rel_humidity_measurement.h"
 
 /**@brief power Measurement cluster attributes according to ZCL Specification 4.5.2.1.1. */
 typedef struct
@@ -28,13 +28,13 @@ typedef struct
   ZB_SET_ATTR_DESCR_WITH_ZB_ZCL_ATTR_POWER_CONFIG_BATTERY_ALARM_STATE_ID(alarm_state,), \
   ZB_ZCL_FINISH_DECLARE_ATTRIB_LIST
 
-/**@brief illuminance Measurement cluster attributes */
+/**@brief Humidity Measurement cluster attributes according to ZCL Spec 4.4.2.1.1. */
 typedef struct
 {
     zb_int16_t  measure_value;
     zb_int16_t  min_measure_value;
     zb_int16_t  max_measure_value;
-} zb_zcl_illuminance_measurement_attrs_t;
+} zb_zcl_humm_measurement_attrs_t;
 
 #ifdef __cplusplus
 }

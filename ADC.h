@@ -5,13 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
     #include "nrf_drv_saadc.h"
-		#ifdef DEBUG_MODE
-		#include "SEGGER_RTT.h"
-		#endif
-		void Adc12bitPolledInitialise(void);
-    int16_t GetBatteryVoltage1( void );
+    void Adc12bitPolledInitialise(void);
+    int16_t GetBatteryVoltage( void );
     
 #ifdef __cplusplus
 }

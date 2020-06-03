@@ -4,9 +4,6 @@
 // Input range of internal Vdd measurement = (0.6 V)/(1/6) = 3.6 V
 // 3.0 volts -> 14486 ADC counts with 14-bit sampling: 4828.8 counts per volt
 #define ADC12_COUNTS_PER_VOLT 4551
-//uint16_t bat_volt;
-uint8_t bat_volt1;
-uint8_t bat_volt2;
 
 /**
  * @brief Function for 14-bit adc init in polled mode
@@ -49,7 +46,7 @@ void Adc12bitPolledInitialise(void)
 /**
  * @brief Function for 14-bit adc battery voltage by direct blocking reading
  */
-int16_t GetBatteryVoltage1(void)
+int16_t GetBatteryVoltage(void)
 {			
 		Adc12bitPolledInitialise();
 		uint16_t result = 9999;         // Some recognisable dummy value
@@ -73,11 +70,8 @@ int16_t GetBatteryVoltage1(void)
 		// Disable command to reduce power consumption
 		nrf_saadc_disable();
 		if (timeout != 0)
-		{		
-			result = (((buffer[0] * 1000L)+(ADC12_COUNTS_PER_VOLT/2)) / ADC12_COUNTS_PER_VOLT);
-			#if DEBUG_MODE
-			SEGGER_RTT_printf(0, "battery_voltage: %d\n", result);
-			#endif
+		{
+                  result = (((buffer[0] * 1000L)+(ADC12_COUNTS_PER_VOLT/2)) / ADC12_COUNTS_PER_VOLT);
 		}    
 		return result;
 }
